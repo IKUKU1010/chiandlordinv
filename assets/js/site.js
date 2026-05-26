@@ -158,7 +158,7 @@ function buildFooter(pathPrefix = "") {
           </div>
         </div>
         <div class="footer-bottom">
-          <div>© 2026 Chilordinv · Powered by Chichi</div>
+          <div> © 2026 Chiandlordinv ·                   Powered by GewenchiTech</div>
           <div class="legal">
             <a href="${CONFIG.legal.privacy}"    target="_blank" rel="noreferrer">Privacy policy</a>
             <a href="${CONFIG.legal.disclaimer}" target="_blank" rel="noreferrer">Disclaimer</a>
