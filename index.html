@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chilordinv — Organic, wellness, perfumes, CBD & Longrich</title>
+  <meta name="description" content="Hand-picked organic goods, soulful perfumes, premium CBD, and Longrich essentials — delivered across Nigeria.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div id="nav-host"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="fadein">
+        <span class="hero-badge">Naturally sourced · Lagos</span>
+        <h1 class="display">Wellness, <em>rooted</em><br>in nature.</h1>
+        <p>Hand-picked organic goods, soulful perfumes, premium CBD, and Longrich essentials — delivered across Nigeria.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="shop.html">Shop the collection</a>
+          <a class="btn btn-secondary" href="services.html">Our services</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&q=80" alt="Organic wellness products">
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Our world</div>
+          <h2 class="display">Shop by category</h2>
+        </div>
+        <a href="shop.html" style="font-size:14px;text-decoration:underline;text-underline-offset:4px">View all →</a>
+      </div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">This week</div>
+          <h2 class="display">Loved by our community</h2>
+        </div>
+      </div>
+      <div class="products-grid" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <!-- BLOG TEASER -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Journal</div>
+          <h2 class="display">From the shelf</h2>
+        </div>
+        <a href="blog.html" style="font-size:14px;text-decoration:underline;text-underline-offset:4px">All articles →</a>
+      </div>
+      <div class="blog-grid" id="blogTeaser"></div>
+    </div>
+  </section>
+
+  <!-- PROMISES -->
+  <section class="section">
+    <div class="container">
+      <div class="promise-grid">
+        <div class="promise" id="p1"></div>
+        <div class="promise" id="p2"></div>
+        <div class="promise" id="p3"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-host"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  mountLayout({ active: "home", pathPrefix: "" });
+
+  // Category grid
+  $("#catGrid").innerHTML = CATEGORIES.map((c, i) => `
+    <a class="cat-card ${i === 0 ? "featured" : ""}" href="products/${c.slug}.html">
+      <img src="${c.hero}" alt="${c.name}" loading="lazy">
+      <div class="cat-card-overlay">
+        <div class="cat-card-eyebrow">${ICON[c.icon]} Category</div>
+        <div class="cat-card-title">${c.name}</div>
+        <div class="cat-card-blurb">${c.blurb}</div>
+      </div>
+    </a>`).join("");
+
+  // Featured (first 4)
+  renderProductGrid("featuredGrid", PRODUCTS.slice(0, 4));
+
+  // Blog teaser
+  $("#blogTeaser").innerHTML = BLOG_POSTS.slice(0, 3).map(b => renderBlogCard(b, "")).join("");
+
+  // Promises
+  const promises = [
+    { icon: ICON.leaf, t: "Naturally sourced", b: "Every product chosen for purity and intention." },
+    { icon: ICON.truck, t: "Fast delivery", b: "1–2 days in Lagos. Nationwide shipping." },
+    { icon: ICON.shield, t: "Authentic guarantee", b: "Direct from verified distributors." },
+  ];
+  ["p1", "p2", "p3"].forEach((id, i) => {
+    $("#" + id).innerHTML = `${promises[i].icon}<h3>${promises[i].t}</h3><p>${promises[i].b}</p>`;
+  });
+</script>
+</body>
+</html>

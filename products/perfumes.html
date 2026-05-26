@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfumes & Oils — Chilordinv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div id="nav-host"></div>
+
+<main>
+  <!-- HEADER -->
+  <section class="cat-header" id="catHeader"></section>
+
+  <!-- VIEW TOGGLE -->
+  <div class="container view-toggle">
+    <div class="muted" id="productCount"></div>
+    <div class="switch">
+      <button data-view="slideshow" class="active">Slideshow</button>
+      <button data-view="grid">Show all (grid)</button>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="container" style="padding-bottom:80px;padding-top:16px">
+    <div id="slideshow" class="slideshow"></div>
+    <div id="categoryGrid" class="products-grid" style="margin-top:24px"></div>
+  </div>
+</main>
+
+<div id="footer-host"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+  mountLayout({ active: "category", pathPrefix: "../" });
+
+  const SLUG = "perfumes";
+  const category = CATEGORIES.find(c => c.slug === SLUG);
+  const products = PRODUCTS.filter(p => p.category === SLUG);
+
+  $("#catHeader").innerHTML = `
+    <div class="container cat-header-grid">
+      <div class="fadein">
+        <a class="back-link" href="../shop.html">${ICON.chevLeft} All categories</a>
+        <h1 class="display">${category.name}</h1>
+        <p style="font-size:18px;color:var(--ink-2);max-width:480px">${category.blurb}</p>
+      </div>
+      <div class="cat-header-img"><img src="${category.hero}" alt="${category.name}"></div>
+    </div>`;
+
+  $("#productCount").textContent = products.length + " products";
+  initCategoryView(products);
+</script>
+</body>
+</html>

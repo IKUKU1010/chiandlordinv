@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Chilordinv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div id="nav-host"></div>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div style="margin-bottom:48px" class="fadein">
+        <div class="eyebrow">Journal</div>
+        <h1 class="display" style="font-size:clamp(40px,5vw,64px)">Notes from the shelf</h1>
+        <p class="muted" style="margin-top:8px;max-width:560px">Honest takes on the products we sell, simple wellness routines, and how to think about what you put on your skin or in your body.</p>
+      </div>
+      <div class="blog-grid" id="blogGrid"></div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-host"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  mountLayout({ active: "blog", pathPrefix: "" });
+  $("#blogGrid").innerHTML = BLOG_POSTS.map(b => renderBlogCard(b, "")).join("");
+</script>
+</body>
+</html>

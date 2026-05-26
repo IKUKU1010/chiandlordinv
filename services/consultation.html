@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellness Consultation — Chilordinv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div id="nav-host"></div>
+
+<main>
+  <section class="cat-header" id="svcHeader"></section>
+</main>
+
+<div id="footer-host"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+  mountLayout({ active: "service", pathPrefix: "../" });
+
+  const SLUG = "consultation";
+  const s = SERVICES.find(x => x.slug === SLUG);
+  const waMsg = "Hi! I'd like to learn more about your " + s.name + " service.";
+
+  $("#svcHeader").innerHTML = `
+    <div class="container cat-header-grid">
+      <div class="fadein">
+        <a class="back-link" href="../services.html">${ICON.chevLeft} All services</a>
+        <h1 class="display">${s.name}</h1>
+        <p style="font-size:18px;color:var(--ink-2);max-width:480px;margin-bottom:24px">${s.description}</p>
+        <div class="display" style="font-size:24px;color:var(--leaf);margin-bottom:24px">${s.price}</div>
+        <a class="btn btn-primary" href="${waLink(waMsg)}" target="_blank" rel="noreferrer">Book on WhatsApp</a>
+      </div>
+      <div class="cat-header-img"><img src="${s.img}" alt="${s.name}"></div>
+    </div>`;
+</script>
+</body>
+</html>

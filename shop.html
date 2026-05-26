@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products — Chilordinv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div id="nav-host"></div>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div style="margin-bottom:48px" class="fadein">
+        <div class="eyebrow">Products</div>
+        <h1 class="display" style="font-size:clamp(40px,5vw,64px)">All categories</h1>
+        <p class="muted" style="margin-top:8px">Choose a category to explore its full range.</p>
+      </div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-host"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  mountLayout({ active: "shop", pathPrefix: "" });
+  $("#catGrid").innerHTML = CATEGORIES.map(c => `
+    <a class="cat-card" href="products/${c.slug}.html" style="aspect-ratio:4/3">
+      <img src="${c.hero}" alt="${c.name}" loading="lazy">
+      <div class="cat-card-overlay">
+        <div class="cat-card-title">${c.name}</div>
+        <div class="cat-card-blurb">${c.blurb}</div>
+      </div>
+    </a>`).join("");
+</script>
+</body>
+</html>

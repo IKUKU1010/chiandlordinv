@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Chilordinv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div id="nav-host"></div>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div style="margin-bottom:48px" class="fadein">
+        <div class="eyebrow">Services</div>
+        <h1 class="display" style="font-size:clamp(40px,5vw,64px)">What we offer</h1>
+        <p class="muted" style="margin-top:8px;max-width:540px">Beyond products, we provide ongoing care and curated experiences.</p>
+      </div>
+      <div class="services-grid" id="servicesGrid"></div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-host"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  mountLayout({ active: "services", pathPrefix: "" });
+  $("#servicesGrid").innerHTML = SERVICES.map(s => `
+    <a class="service-card" href="services/${s.slug}.html">
+      <div class="img-wrap"><img src="${s.img}" alt="${s.name}" loading="lazy"></div>
+      <div class="body">
+        <h3>${s.name}</h3>
+        <p class="blurb">${s.blurb}</p>
+        <div class="price">${s.price} →</div>
+      </div>
+    </a>`).join("");
+</script>
+</body>
+</html>

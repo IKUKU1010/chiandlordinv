@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starting CBD: a beginner's calm-and-careful guide — Chilordinv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div id="nav-host"></div>
+
+<main id="blogPost"></main>
+
+<div id="footer-host"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+  mountLayout({ active: "blogpost", pathPrefix: "../" });
+  const SLUG = "starting-cbd-the-right-way";
+  const post = BLOG_POSTS.find(b => b.slug === SLUG);
+  $("#blogPost").innerHTML = post ? renderBlogPost(post) : '<div class="container" style="padding:80px 0;text-align:center"><h2 class="display">Post not found</h2></div>';
+</script>
+</body>
+</html>
